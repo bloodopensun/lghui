@@ -60,6 +60,10 @@
       <Project>{be525004-8264-42a2-b4bc-f389b83fbf55}</Project>
       <Name>Lghui.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lghui.SmartQQ\Lghui.SmartQQ.csproj">
+      <Project>{e7267be7-386e-4da1-ada4-b5f4cacc60ac}</Project>
+      <Name>Lghui.SmartQQ</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

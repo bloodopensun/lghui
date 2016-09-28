@@ -24,7 +24,7 @@ namespace Lghui.SmartQQ.Model.GroupInfoExt2
         public long Createtime { get; set; }
 
         [JsonProperty("flag")]
-        public int Flag { get; set; }
+        public long Flag { get; set; }
 
         [JsonProperty("level")]
         public int Level { get; set; }
