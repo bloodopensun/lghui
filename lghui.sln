@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lghui.Framework", "Lghui.Framework\Lghui.Framework.csproj", "{BE525004-8264-42A2-B4BC-F389B83FBF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quartz.2010", "Quartz\Quartz.2010.csproj", "{AEF8823B-E45B-4B35-A4D0-C08C1196D017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lghui.Test", "Lghui.Test\Lghui.Test.csproj", "{56F917EA-54F5-4C82-AC4B-67B0EB2D92B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lghui.Quartz.Jobs", "Lghui.Quartz.Jobs\Lghui.Quartz.Jobs.csproj", "{1F761924-E922-41D8-ACC0-B21436E4B841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lghui.Quartz.Linux", "Lghui.Quartz.Linux\Lghui.Quartz.Linux.csproj", "{B7D18507-CFAB-4926-98B3-D771228ACE38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lghui.SmartQQ", "Lghui.SmartQQ\Lghui.SmartQQ.csproj", "{E7267BE7-386E-4DA1-ADA4-B5F4CACC60AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQQ", "SmartQQ\SmartQQ.csproj", "{5E2EB91D-65FE-42DC-9F35-2645B8A4E050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{1007CAEF-AC71-4E7E-8C5D-7D56BB968797}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Readme", "Readme", "{8D158B0B-B2A9-4C5C-8B61-155B6D6C3B9D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE525004-8264-42A2-B4BC-F389B83FBF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE525004-8264-42A2-B4BC-F389B83FBF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE525004-8264-42A2-B4BC-F389B83FBF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE525004-8264-42A2-B4BC-F389B83FBF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF8823B-E45B-4B35-A4D0-C08C1196D017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF8823B-E45B-4B35-A4D0-C08C1196D017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF8823B-E45B-4B35-A4D0-C08C1196D017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF8823B-E45B-4B35-A4D0-C08C1196D017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F917EA-54F5-4C82-AC4B-67B0EB2D92B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F917EA-54F5-4C82-AC4B-67B0EB2D92B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F917EA-54F5-4C82-AC4B-67B0EB2D92B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F917EA-54F5-4C82-AC4B-67B0EB2D92B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F761924-E922-41D8-ACC0-B21436E4B841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F761924-E922-41D8-ACC0-B21436E4B841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F761924-E922-41D8-ACC0-B21436E4B841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F761924-E922-41D8-ACC0-B21436E4B841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D18507-CFAB-4926-98B3-D771228ACE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D18507-CFAB-4926-98B3-D771228ACE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D18507-CFAB-4926-98B3-D771228ACE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D18507-CFAB-4926-98B3-D771228ACE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7267BE7-386E-4DA1-ADA4-B5F4CACC60AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7267BE7-386E-4DA1-ADA4-B5F4CACC60AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7267BE7-386E-4DA1-ADA4-B5F4CACC60AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7267BE7-386E-4DA1-ADA4-B5F4CACC60AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2EB91D-65FE-42DC-9F35-2645B8A4E050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2EB91D-65FE-42DC-9F35-2645B8A4E050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2EB91D-65FE-42DC-9F35-2645B8A4E050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2EB91D-65FE-42DC-9F35-2645B8A4E050}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AEF8823B-E45B-4B35-A4D0-C08C1196D017} = {1007CAEF-AC71-4E7E-8C5D-7D56BB968797}
+	EndGlobalSection
+EndGlobal
