@@ -367,26 +367,7 @@ namespace Lghui.SmartQQ
                 .AddData("r", new
                 {
                     to = uin,
-                    content = new object[]
-                    {
-                        msg,
-                        new object[]
-                        {
-                            "font",
-                            new
-                            {
-                                name = "宋体",
-                                size = 10,
-                                style = new []
-                                {
-                                    0,
-                                    0,
-                                    0
-                                },
-                                color = "000000"
-                            }
-                        }
-                    }.ToJson(),
+                    content = msg,
                     face = 0,
                     clientid = ClientId,
                     msg_id = MsgId++,

@@ -12,6 +12,6 @@ namespace Lghui.SmartQQ.Model.SendBuddyMsg2
         /// <summary>
         /// 信息内容 文本直接文本  face传face代码  换行\n   传text类型
         /// </summary>
-        public string Msg { get; set; }
+        public object Msg { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using Lghui.Framework.Expand;
 using Lghui.SmartQQ.Enum.Poll2;
 using Lghui.SmartQQ.Enum.SendBuddyMsg2;
 
@@ -18,13 +19,18 @@ namespace Lghui.SmartQQ.Model.SendBuddyMsg2
         public string Uid { get; set; }
 
         /// <summary>
+        /// 字体
+        /// </summary>
+        public FontModel Font { get; set; } = new FontModel();
+
+        /// <summary>
         /// 要发送的消息 按顺序add进去 
         /// </summary>
         public List<MsgModel> Msg { get; set; } = new List<MsgModel>();
 
         public string ToMsg()
         {
-            var msgList = new List<string>();
+            var msgList = new List<object>();
             foreach (var msgModel in Msg)
             {
                 switch (msgModel.Poll)
@@ -33,11 +39,16 @@ namespace Lghui.SmartQQ.Model.SendBuddyMsg2
                         msgList.Add(msgModel.Msg);
                         break;
                     case PollEnum.Face:
-                        msgList.Add($"[\"face\",{msgModel.Msg}]");
+                        msgList.Add(new[]
+                        {
+                            "face",
+                            msgModel.Msg
+                        });
                         break;
                 }
             }
-            return string.Join(",", msgList);
+            msgList.Add(Font);
+            return msgList.ToJson();
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Threading;
 using Lghui.Framework.Expand;
 using Lghui.SmartQQ;
 using Lghui.SmartQQ.Enum.Poll2;
+using Lghui.SmartQQ.Enum.SendBuddyMsg2;
+using Lghui.SmartQQ.Model.SendBuddyMsg2;
 using Newtonsoft.Json.Linq;
 
 namespace SmartQQ
@@ -106,35 +108,6 @@ namespace SmartQQ
             foreach (var result in model)
             {
                 var hread = new StringBuilder();
-                var dateTime = DateTime.Now.ToString("HH:mm:ss");
-                switch (result.PollType)
-                {
-                    case PollType.message:
-                        var info = GetUserFriends(result.Value.FromUin);
-                        var marknames = Qq.UserFriends2Model.Marknames?.FirstOrDefault(c => c.Uin == result.Value.FromUin);
-                        hread.AppendLine($"{(null == marknames ? info.Nick : marknames.Markname)} {dateTime}");
-                        Qq.SendBuddyMsg2(info.Uin,"hehe");
-                        break;
-                    //case PollType.GroupMessage:
-                    //    var gname = GetGroupNameListMask(result.Value.GroupCode);
-                    //    var gmark = Qq.GroupNameListMask2Model.GmarkList?.FirstOrDefault(c => c.Uin == result.Value.GroupCode);
-                    //    hread.AppendLine($"{(null == gmark ? gname.Name : gmark.MarkName)}");
-
-                    //    var minfo = GetGroupInfoExt(gname.Code, result.Value.SendUin);
-                    //    var card = Qq.GroupInfoExt2[gname.Code].Cards?.FirstOrDefault(c => c.Muin == result.Value.SendUin);
-                    //    hread.AppendLine($"{(null == card ? minfo.Nick : card.Card)} {dateTime}");
-                    //    break;
-                    //case PollType.DiscuMessage:
-                    //    var dname = GetDiscusList(result.Value.Did);
-                    //    hread.AppendLine($"{dname.Name}");
-
-                    //    var meminfo = GetDiscuInfo(result.Value.Did, result.Value.SendUin);
-                    //    hread.AppendLine($"{meminfo.Nick} {dateTime}");
-                    //    break;
-                    //default:
-                    //    hread.AppendLine(result.PollType.ToDescriptionName());
-                    //    break;
-                }
 
                 var msg = new StringBuilder();
                 for (var i = 1; i < result.Value.Content.Count; i++)
@@ -150,6 +123,44 @@ namespace SmartQQ
                         msg.Append(content);
                     }
                 }
+
+                var dateTime = DateTime.Now.ToString("HH:mm:ss");
+                switch (result.PollType)
+                {
+                    case PollType.message:
+                        var info = GetUserFriends(result.Value.FromUin);
+                        var marknames = Qq.UserFriends2Model.Marknames?.FirstOrDefault(c => c.Uin == result.Value.FromUin);
+                        hread.AppendLine($"{(null == marknames ? info.Nick : marknames.Markname)} {dateTime}");
+                        var a = new SendModel();
+                        a.Msg.Add(new MsgModel
+                        {
+                            Poll = PollEnum.Text,
+                            Msg = msg.ToString()
+                        });
+                        Qq.SendBuddyMsg2(result.Value.FromUin,a.ToMsg());
+                        break;
+                    case PollType.group_message:
+                        var gname = GetGroupNameListMask(result.Value.GroupCode);
+                        var gmark = Qq.GroupNameListMask2Model.GmarkList?.FirstOrDefault(c => c.Uin == result.Value.GroupCode);
+                        hread.AppendLine($"{(null == gmark ? gname.Name : gmark.MarkName)}");
+
+                        var minfo = GetGroupInfoExt(gname.Code, result.Value.SendUin);
+                        var card = Qq.GroupInfoExt2[gname.Code].Cards?.FirstOrDefault(c => c.Muin == result.Value.SendUin);
+                        hread.AppendLine($"{(null == card ? minfo.Nick : card.Card)} {dateTime}");
+                        break;
+                    case PollType.discu_message:
+                        var dname = GetDiscusList(result.Value.Did);
+                        hread.AppendLine($"{dname.Name}");
+
+                        var meminfo = GetDiscuInfo(result.Value.Did, result.Value.SendUin);
+                        hread.AppendLine($"{meminfo.Nick} {dateTime}");
+                        break;
+                    default:
+                        hread.AppendLine(result.PollType.ToString());
+                        break;
+                }
+
+
                 hread.AppendLine(msg.ToString());
                 Console.WriteLine(hread);
             }
