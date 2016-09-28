@@ -10,7 +10,7 @@ namespace Lghui.SmartQQ.Model.SendBuddyMsg2
         /// <summary>
         /// 信息类型 message好友信息 group_message群信息
         /// </summary>
-        public PollType PollType { get; set; } = PollType.Message;
+        public PollType PollType { get; set; } = PollType.message;
 
         /// <summary>
         /// 接收方的uid 群信息就是group_uid

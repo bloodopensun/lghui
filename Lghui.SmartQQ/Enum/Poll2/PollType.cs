@@ -7,31 +7,26 @@ namespace Lghui.SmartQQ.Enum.Poll2
         /// <summary>
         /// 好友消息
         /// </summary>
-        [Description("message")]
-        Message,
+        message,
 
         /// <summary>
         /// 群消息
         /// </summary>
-        [Description("group_message")]
-        GroupMessage,
+        group_message,
 
         /// <summary>
         /// 讨论组消息
         /// </summary>
-        [Description("DiscuMessage")]
         DiscuMessage,
 
         /// <summary>
         /// 好友系统消息
         /// </summary>
-        [Description("system_message")]
-        SystemMessage,
+        system_message,
 
         /// <summary>
         /// 群系统消息
         /// </summary>
-        [Description("sys_g_msg")]
-        SysGMsg
+        sys_g_msg
     }
 }

@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 using Lghui.Framework.Expand;
 using Lghui.Framework.OpenHttp;
 using Lghui.SmartQQ.Model;
-using Lghui.SmartQQ.Model.SendBuddyMsg2;
 
 namespace Lghui.SmartQQ
 {
@@ -364,16 +363,13 @@ namespace Lghui.SmartQQ
                 .Url(SendBuddyMsg2Url)
                 .Referer(SendBuddyMsg2Referer)
                 .Host(SendBuddyMsg2Host)
-                .Origin(SendBuddyMsg2Origin);
-
-
-            head = head.AddData("r", new
-            {
-                to = uin,
-                content = new object[]
+                .Origin(SendBuddyMsg2Origin)
+                .AddData("r", new
                 {
+                    to = uin,
+                    content = new object[]
+                    {
                         msg,
-                        "" ,
                         new object[]
                         {
                             "font",
@@ -390,12 +386,12 @@ namespace Lghui.SmartQQ
                                 color = "000000"
                             }
                         }
-                },
-                face = 0,
-                clientid = ClientId,
-                msg_id = MsgId++,
-                psessionid = Login2Model.Psessionid
-            }.ToJson());
+                    }.ToJson(),
+                    face = 0,
+                    clientid = ClientId,
+                    msg_id = MsgId++,
+                    psessionid = Login2Model.Psessionid
+                }.ToJson());
             //{"to":406441720
             //{"group_uin":1955688870
             //{"did":3412140783
