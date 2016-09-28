@@ -393,6 +393,10 @@ namespace Lghui.SmartQQ
                     msg_id = MsgId++,
                     psessionid = Login2Model.Psessionid
                 }.ToJson());
+
+            var bytes = _httpClient.Load(ref head);
+
+            var json = bytes.ToString(head.Encod);
         }
     }
 }
