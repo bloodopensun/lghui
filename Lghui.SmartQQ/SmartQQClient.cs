@@ -356,7 +356,7 @@ namespace Lghui.SmartQQ
         /// <summary>
         /// 发送消息
         /// </summary>
-        public void SendBuddyMsg2()
+        public void SendBuddyMsg2(long uin)
         {
             var head = HttpHead.Builder
                 .MethodPost()
@@ -366,7 +366,7 @@ namespace Lghui.SmartQQ
                 .Origin(SendBuddyMsg2Origin)
                 .AddData("r", new
                 {
-                    to = 0,
+                    to = uin,
                     content = new object[]
                     {
                         1,
@@ -393,7 +393,7 @@ namespace Lghui.SmartQQ
                     msg_id = MsgId++,
                     psessionid = Login2Model.Psessionid
                 }.ToJson());
-
+            //{"to":406441720,"content":"[[\"Face\",3],\" \",[\"font\",{\"name\":\"宋体\",\"size\":10,\"style\":[0,0,0],\"color\":\"000000\"}]]","Face":0,"clientid":53999199,"msg_id":85260001,"psessionid":"8368046764001d636f6e6e7365727665725f77656271714031302e3133332e34312e383400001ad00000066b026e040015808a206d0000000a406172314338344a69526d0000002859185d94e66218548d1ecb1a12513c86126b3afb97a3c2955b1070324790733ddb059ab166de6857"}
             var bytes = _httpClient.Load(ref head);
 
             var json = bytes.ToString(head.Encod);

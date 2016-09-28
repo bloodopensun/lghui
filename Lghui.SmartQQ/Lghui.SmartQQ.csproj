@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\SendBuddyMsg2\PollEnum.cs" />
     <Compile Include="Model\DiscuInfo\Info.cs" />
     <Compile Include="Model\DiscuInfo\Mem.cs" />
     <Compile Include="Model\DiscuInfo\MemInfo.cs" />
@@ -93,7 +94,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\SendBuddyMsg2\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
