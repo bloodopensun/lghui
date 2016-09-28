@@ -1,5 +1,4 @@
 ﻿using Lghui.SmartQQ.Enum.Poll2;
-using Lghui.SmartQQ.Enum.SendBuddyMsg2;
 using Newtonsoft.Json;
 
 namespace Lghui.SmartQQ.Model.Poll2

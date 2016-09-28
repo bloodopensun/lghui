@@ -7,8 +7,8 @@ using System.Threading;
 using Lghui.Framework.Expand;
 using Lghui.SmartQQ;
 using Lghui.SmartQQ.Enum.Poll2;
-using Lghui.SmartQQ.Enum.SendBuddyMsg2;
-using Lghui.SmartQQ.Model.SendBuddyMsg2;
+using Lghui.SmartQQ.Enum.SendAllMsg2;
+using Lghui.SmartQQ.Model.SendAllMsg2;
 using Newtonsoft.Json.Linq;
 
 namespace SmartQQ
@@ -108,6 +108,7 @@ namespace SmartQQ
             foreach (var result in model)
             {
                 var hread = new StringBuilder();
+                var send = SendModel.Build;
 
                 var msg = new StringBuilder();
                 for (var i = 1; i < result.Value.Content.Count; i++)
@@ -115,12 +116,14 @@ namespace SmartQQ
                     var content = result.Value.Content[i];
                     if (content is JArray)
                     {
-                        var expression = Qq.Expression.FirstOrDefault(c => c.Key == content[1].ToString());
+                        var expression = Qq.Expression.FirstOrDefault(c => c.Key == int.Parse(content[1].ToString()));
                         msg.Append($"[{(expression != null ? expression.Value : content[1].ToString())}]");
+                        send.Send(expression == null ? PollEnum.Text : PollEnum.Face, expression?.Key ?? content);
                     }
                     else
                     {
                         msg.Append(content);
+                        send.Send(PollEnum.Text, content);
                     }
                 }
 
@@ -131,13 +134,6 @@ namespace SmartQQ
                         var info = GetUserFriends(result.Value.FromUin);
                         var marknames = Qq.UserFriends2Model.Marknames?.FirstOrDefault(c => c.Uin == result.Value.FromUin);
                         hread.AppendLine($"{(null == marknames ? info.Nick : marknames.Markname)} {dateTime}");
-                        var a = new SendModel();
-                        a.Msg.Add(new MsgModel
-                        {
-                            Poll = PollEnum.Text,
-                            Msg = msg.ToString()
-                        });
-                        Qq.SendBuddyMsg2(result.Value.FromUin,a.ToMsg());
                         break;
                     case PollType.group_message:
                         var gname = GetGroupNameListMask(result.Value.GroupCode);
@@ -154,6 +150,12 @@ namespace SmartQQ
 
                         var meminfo = GetDiscuInfo(result.Value.Did, result.Value.SendUin);
                         hread.AppendLine($"{meminfo.Nick} {dateTime}");
+                        if (dname.Name == "被老谭鄙视的大专仔")
+                        {
+                            send.Uid = dname.Did;
+                            send.PollType = PollType.discu_message;
+                            Qq.SendMag(send);
+                        }
                         break;
                     default:
                         hread.AppendLine(result.PollType.ToString());
@@ -213,7 +215,7 @@ namespace SmartQQ
                     return Qq.DiscuInfo[did].MemInfo.FirstOrDefault(c => c.Uin == uin);
                 Qq.GetDiscuInfo(did);
             }
-        } 
+        }
         #endregion
     }
 }

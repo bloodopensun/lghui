@@ -1,4 +1,4 @@
-﻿namespace Lghui.SmartQQ.Enum.SendBuddyMsg2
+﻿namespace Lghui.SmartQQ.Enum.SendAllMsg2
 {
     public enum FontSizeEnum
     {

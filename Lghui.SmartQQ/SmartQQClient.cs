@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Lghui.Framework.Expand;
 using Lghui.Framework.OpenHttp;
+using Lghui.SmartQQ.Enum.Poll2;
 using Lghui.SmartQQ.Model;
+using Lghui.SmartQQ.Model.SendAllMsg2;
 
 namespace Lghui.SmartQQ
 {
@@ -353,10 +355,26 @@ namespace Lghui.SmartQQ
         }
         #endregion
 
+        public void SendMag(SendModel model)
+        {
+            switch (model.PollType)
+            {
+                case PollType.message:
+                    SendBuddyMsg2(model.Uid, model.BuildMsg());
+                    break;
+                case PollType.group_message:
+                    SendQunMsg2(model.Uid, model.BuildMsg());
+                    break;
+                case PollType.discu_message:
+                    SendDiscuMsg2(model.Uid, model.BuildMsg());
+                    break;
+            }
+        }
+
         /// <summary>
         /// 发送个人消息
         /// </summary>
-        public void SendBuddyMsg2(long uin, string msg)
+        private void SendBuddyMsg2(long uin, string msg)
         {
             var head = HttpHead.Builder
                 .MethodPost()
@@ -368,14 +386,64 @@ namespace Lghui.SmartQQ
                 {
                     to = uin,
                     content = msg,
-                    face = 0,
+                    face = 468,
                     clientid = ClientId,
                     msg_id = MsgId++,
                     psessionid = Login2Model.Psessionid
                 }.ToJson());
-            //{"to":406441720
-            //{"group_uin":1955688870
-            //{"did":3412140783
+
+            var bytes = _httpClient.Load(ref head);
+
+            var json = bytes.ToString(head.Encod);
+        }
+
+        /// <summary>
+        /// 发送群消息
+        /// </summary>
+        private void SendQunMsg2(long uin, string msg)
+        {
+            var head = HttpHead.Builder
+                .MethodPost()
+                .Url(SendQunMsg2Url)
+                .Referer(SendQunMsg2Referer)
+                .Host(SendQunMsg2Host)
+                .Origin(SendQunMsg2Origin)
+                .AddData("r", new
+                {
+                    group_uin = uin,
+                    content = msg,
+                    face = 468,
+                    clientid = ClientId,
+                    msg_id = MsgId++,
+                    psessionid = Login2Model.Psessionid
+                }.ToJson());
+
+            var bytes = _httpClient.Load(ref head);
+
+            var json = bytes.ToString(head.Encod);
+        }
+
+        /// <summary>
+        /// 发送讨论组消息
+        /// </summary>
+        private void SendDiscuMsg2(long uin, string msg)
+        {
+            var head = HttpHead.Builder
+                .MethodPost()
+                .Url(SendDiscuMsg2Url)
+                .Referer(SendDiscuMsg2Referer)
+                .Host(SendDiscuMsg2Host)
+                .Origin(SendDiscuMsg2Origin)
+                .AddData("r", new
+                {
+                    did = uin,
+                    content = msg,
+                    face = 468,
+                    clientid = ClientId,
+                    msg_id = MsgId++,
+                    psessionid = Login2Model.Psessionid
+                }.ToJson());
+
             var bytes = _httpClient.Load(ref head);
 
             var json = bytes.ToString(head.Encod);

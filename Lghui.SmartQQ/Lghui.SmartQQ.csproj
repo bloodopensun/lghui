@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\Poll2\PollType.cs" />
-    <Compile Include="Enum\SendBuddyMsg2\FontSizeEnum.cs" />
-    <Compile Include="Enum\SendBuddyMsg2\PollEnum.cs" />
+    <Compile Include="Enum\SendAllMsg2\FontSizeEnum.cs" />
+    <Compile Include="Enum\SendAllMsg2\PollEnum.cs" />
     <Compile Include="Model\DiscuInfo\Info.cs" />
     <Compile Include="Model\DiscuInfo\Mem.cs" />
     <Compile Include="Model\DiscuInfo\MemInfo.cs" />
@@ -73,9 +73,9 @@
     <Compile Include="Model\RecentList2\Result.cs" />
     <Compile Include="Model\SelfInfo2\Birthday.cs" />
     <Compile Include="Model\SelfInfo2\Result.cs" />
-    <Compile Include="Model\SendBuddyMsg2\FontModel.cs" />
-    <Compile Include="Model\SendBuddyMsg2\MsgModel.cs" />
-    <Compile Include="Model\SendBuddyMsg2\SendModel.cs" />
+    <Compile Include="Model\SendAllMsg2\FontModel.cs" />
+    <Compile Include="Model\SendAllMsg2\MsgModel.cs" />
+    <Compile Include="Model\SendAllMsg2\SendModel.cs" />
     <Compile Include="Model\SmartQQModel.cs" />
     <Compile Include="Model\UserFriends2\Categories.cs" />
     <Compile Include="Model\UserFriends2\Friends.cs" />
@@ -99,7 +99,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\SendBuddyMsg2\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

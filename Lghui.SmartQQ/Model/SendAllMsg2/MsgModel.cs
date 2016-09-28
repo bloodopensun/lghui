@@ -1,6 +1,6 @@
-﻿using Lghui.SmartQQ.Enum.SendBuddyMsg2;
+﻿using Lghui.SmartQQ.Enum.SendAllMsg2;
 
-namespace Lghui.SmartQQ.Model.SendBuddyMsg2
+namespace Lghui.SmartQQ.Model.SendAllMsg2
 {
     public class MsgModel
     {

@@ -85,11 +85,25 @@
         private const string GetDiscuInfoHost = "d1.web2.qq.com";
         #endregion
 
-        #region 发送消息
+        #region 发送个人消息
         private const string SendBuddyMsg2Url = "http://d1.web2.qq.com/channel/send_buddy_msg2";
-        private const string SendBuddyMsg2Referer = "http://d1.web2.qq.com/proxy.html?v=20151105001&callback=1&id=2";
+        private const string SendBuddyMsg2Referer = "http://d1.web2.qq.com/proxy.html?v=20151105001&callback=1";
         private const string SendBuddyMsg2Host = "d1.web2.qq.com";
-        private const string SendBuddyMsg2Origin = "http://d1.web2.qq.com"; 
+        private const string SendBuddyMsg2Origin = "http://d1.web2.qq.com";
+        #endregion
+
+        #region 发送群消息
+        private const string SendQunMsg2Url = "https://d1.web2.qq.com/channel/send_qun_msg2";
+        private const string SendQunMsg2Referer = "https://d1.web2.qq.com/cfproxy.html?v=20151105001&callback=1";
+        private const string SendQunMsg2Host = "d1.web2.qq.com";
+        private const string SendQunMsg2Origin = "http://d1.web2.qq.com";
+        #endregion
+
+        #region 发送讨论组消息
+        private const string SendDiscuMsg2Url = "https://d1.web2.qq.com/channel/send_discu_msg2";
+        private const string SendDiscuMsg2Referer = "https://d1.web2.qq.com/cfproxy.html?v=20151105001&callback=1";
+        private const string SendDiscuMsg2Host = "d1.web2.qq.com";
+        private const string SendDiscuMsg2Origin = "http://d1.web2.qq.com";
         #endregion
 
     }
