@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using Lghui.Framework.Expand;
 using Lghui.SmartQQ;
+using Lghui.SmartQQ.Enum.Poll2;
 using Newtonsoft.Json.Linq;
 
 namespace SmartQQ
@@ -108,12 +109,12 @@ namespace SmartQQ
                 var dateTime = DateTime.Now.ToString("HH:mm:ss");
                 switch (result.PollType)
                 {
-                    case "message":
+                    case PollType.Message:
                         var info = GetUserFriends(result.Value.FromUin);
                         var marknames = Qq.UserFriends2Model.Marknames?.FirstOrDefault(c => c.Uin == result.Value.FromUin);
                         hread.AppendLine($"{(null == marknames ? info.Nick : marknames.Markname)} {dateTime}");
                         break;
-                    case "group_message":
+                    case PollType.GroupMessage:
                         var gname = GetGroupNameListMask(result.Value.GroupCode);
                         var gmark = Qq.GroupNameListMask2Model.GmarkList?.FirstOrDefault(c => c.Uin == result.Value.GroupCode);
                         hread.AppendLine($"{(null == gmark ? gname.Name : gmark.MarkName)}");
@@ -122,7 +123,7 @@ namespace SmartQQ
                         var card = Qq.GroupInfoExt2[gname.Code].Cards?.FirstOrDefault(c => c.Muin == result.Value.SendUin);
                         hread.AppendLine($"{(null == card ? minfo.Nick : card.Card)} {dateTime}");
                         break;
-                    case "discu_message":
+                    case PollType.DiscuMessage:
                         var dname = GetDiscusList(result.Value.Did);
                         hread.AppendLine($"{dname.Name}");
 
@@ -130,7 +131,7 @@ namespace SmartQQ
                         hread.AppendLine($"{meminfo.Nick} {dateTime}");
                         break;
                     default:
-                        hread.AppendLine(result.PollType);
+                        hread.AppendLine(result.PollType.ToDescriptionName());
                         break;
                 }
 

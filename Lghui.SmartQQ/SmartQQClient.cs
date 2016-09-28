@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Lghui.Framework.Expand;
 using Lghui.Framework.OpenHttp;
 using Lghui.SmartQQ.Model;
+using Lghui.SmartQQ.Model.SendBuddyMsg2;
 
 namespace Lghui.SmartQQ
 {
@@ -354,22 +355,24 @@ namespace Lghui.SmartQQ
         #endregion
 
         /// <summary>
-        /// 发送消息
+        /// 发送个人消息
         /// </summary>
-        public void SendBuddyMsg2(long uin)
+        public void SendBuddyMsg2(long uin, string msg)
         {
             var head = HttpHead.Builder
                 .MethodPost()
                 .Url(SendBuddyMsg2Url)
                 .Referer(SendBuddyMsg2Referer)
                 .Host(SendBuddyMsg2Host)
-                .Origin(SendBuddyMsg2Origin)
-                .AddData("r", new
+                .Origin(SendBuddyMsg2Origin);
+
+
+            head = head.AddData("r", new
+            {
+                to = uin,
+                content = new object[]
                 {
-                    to = uin,
-                    content = new object[]
-                    {
-                        1,
+                        msg,
                         "" ,
                         new object[]
                         {
@@ -387,13 +390,15 @@ namespace Lghui.SmartQQ
                                 color = "000000"
                             }
                         }
-                    },
-                    face = 0,
-                    clientid = ClientId,
-                    msg_id = MsgId++,
-                    psessionid = Login2Model.Psessionid
-                }.ToJson());
-            //{"to":406441720,"content":"[[\"Face\",3],\" \",[\"font\",{\"name\":\"宋体\",\"size\":10,\"style\":[0,0,0],\"color\":\"000000\"}]]","Face":0,"clientid":53999199,"msg_id":85260001,"psessionid":"8368046764001d636f6e6e7365727665725f77656271714031302e3133332e34312e383400001ad00000066b026e040015808a206d0000000a406172314338344a69526d0000002859185d94e66218548d1ecb1a12513c86126b3afb97a3c2955b1070324790733ddb059ab166de6857"}
+                },
+                face = 0,
+                clientid = ClientId,
+                msg_id = MsgId++,
+                psessionid = Login2Model.Psessionid
+            }.ToJson());
+            //{"to":406441720
+            //{"group_uin":1955688870
+            //{"did":3412140783
             var bytes = _httpClient.Load(ref head);
 
             var json = bytes.ToString(head.Encod);

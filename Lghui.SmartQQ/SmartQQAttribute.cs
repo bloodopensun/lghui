@@ -12,7 +12,7 @@ namespace Lghui.SmartQQ
 
         private static int ClientId => 53999199;
 
-        private static int MsgId { get; set; } = 80780000;
+        private static int MsgId { get; set; } = 85260000;
 
         private string Ptwebqq
         {
